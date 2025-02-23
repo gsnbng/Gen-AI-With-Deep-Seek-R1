@@ -37,9 +37,12 @@ WORKDIR /home/$systemUser
 ## STEP-7: install GEN AI ##
 RUN sudo apt-get update && sudo apt-get upgrade -y \
 && git clone https://github.com/gsnbng/Gen-AI-With-Deep-Seek-R1.git \ 
-&& cd /home/genai/Gen-AI-With-Deep-Seek-R1 && pip3 install requirements.txt \
 
 
-
+## STEP-8 Copy files ##
+RUN cd /home/genai/Gen-AI-With-Deep-Seek-R1 && copy app.py . \
+&& copy rag_deep.py . \
+&& copy requirements.txt . \
+&&  pip3 install requirements.txt \
 ## STEP-14: EXpose Ports ##
 EXPOSE 8999
